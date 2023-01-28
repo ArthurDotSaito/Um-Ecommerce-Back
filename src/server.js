@@ -1,5 +1,6 @@
 import express from 'express';
 import cors from 'cors';
+import authRouter from './Routers/AuthRoutes.js'
 
 // General  ---------------------------------------------------------------------------//
 
@@ -8,6 +9,7 @@ server.use(express.json());
 server.use(cors());
 
 const PORT = process.env.PORT || 5000;
+server.use(authRouter)
 
 // Server Response ------------------------------------------------------------------------//
 

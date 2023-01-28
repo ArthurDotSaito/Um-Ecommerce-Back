@@ -16,3 +16,4 @@ try {
 }
 
 export default db;
+mongoClient.close();
