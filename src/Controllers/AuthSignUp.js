@@ -1,5 +1,5 @@
 import bcrypt from "bcrypt";
-import db from '../Config/Database.js'
+import db from "../Services/Database.js";
 
 // Cadastro de Usuários -----------------------------------------------------------------------------------------------------------//
 
@@ -21,6 +21,7 @@ export async function signUp(req, res) {
         res.status(201).send("Usuário cadastrado com sucesso!");
         console.log("Cadastrado!");
     } catch (error) {
+        console.log("Erro no cadastro - back")
       res.status(500).send(error.message)
     }
   }
