@@ -2,7 +2,7 @@ import { MongoClient } from 'mongodb'
 import dotenv from 'dotenv'
 
 // Database Configuration -----------------------------------------------------------------------//
-dotenv.config()
+dotenv.config();
 
 const mongoClient = new MongoClient(process.env.DATABASE_URL)
 let db;
@@ -16,4 +16,3 @@ try {
 }
 
 export default db;
-mongoClient.close();
