@@ -1,27 +1,29 @@
-import { MongoClient } from "mongodb";
-import dotenv from "dotenv";
 
+import { MongoClient } from 'mongodb'
+import dotenv from 'dotenv'
+
+// Database Configuration -----------------------------------------------------------------------//
 dotenv.config();
 
+const mongoClient = new MongoClient(process.env.DATABASE_URL);
 
-    const mongoClient = new MongoClient(process.env.DATABASE_URL);
-    let db;
+async function getConnection() {
+  let db;
 
+  try {
+    await mongoClient.connect();
+    db = mongoClient.db();
+  } catch (error) {
+    console.log("Erro no servidor");
+    console.log(error);
+  }
 
-    try {
-        await mongoClient.connect()
-        db = mongoClient.db()
+  return db;
+}
 
-    } catch (error) {
-        console.error(error)
-        console.log("Erro ao conectar no banco de dados")
+async function closeConnection() {
+  mongoClient.close();
+}
 
-    }
+export { getConnection, closeConnection };
 
-    export default db;
-
-
-    export function closedb(){
-        const close = mongoClient.close()
-        return close;
-    }
