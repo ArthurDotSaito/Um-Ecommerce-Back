@@ -7,8 +7,6 @@ export async function signUp(req, res) {
     const user = req.body;
     const saltRounds = 10;
 
-    console.log(user)
-
     const passwordHashed = bcrypt.hashSync(user.password, saltRounds);
     
     try {    
@@ -25,6 +23,8 @@ export async function signUp(req, res) {
         console.log("Erro no cadastro - back");
         res.status(500).send(error.message).
         mongoClient.close();
+    }finally{
+      mongoClient.close();
     }
   }
   
