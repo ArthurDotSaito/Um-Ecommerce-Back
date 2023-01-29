@@ -1,3 +1,4 @@
+
 import { MongoClient } from 'mongodb'
 import dotenv from 'dotenv'
 
@@ -25,3 +26,4 @@ async function closeConnection() {
 }
 
 export { getConnection, closeConnection };
+
