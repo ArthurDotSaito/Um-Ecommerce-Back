@@ -8,7 +8,7 @@ export default async function logar(req,res) {
 
     const { email, password } = req.body
 
-    const usuario = await db.collection("usuarios").findOne({ email })
+    const usuario = await db.collection("users").findOne({ email })
 
     if (usuario && bcrypt.compareSync(password, usuario.password)) {
         const token = uuid();
