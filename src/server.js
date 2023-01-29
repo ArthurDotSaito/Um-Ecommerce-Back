@@ -14,6 +14,7 @@ server.use(cors());
 
 const PORT = Number(process.env.PORT) || 5000;
 server.use(authRouter)
+server.use(routerlogin)
 
 // Server Response ------------------------------------------------------------------------//
 server.use("/products", productsRouters);
