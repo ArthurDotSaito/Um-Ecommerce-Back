@@ -1,11 +1,12 @@
 import bcrypt from "bcrypt";
-import db from "../Services/Database.js";
+import { getConnection, closeConnection } from "../Services/Database.js";
 
 // Cadastro de Usuários -----------------------------------------------------------------------------------------------------------//
 
 export async function signUp(req, res) {
     const user = req.body;
     const saltRounds = 10;
+    const db = getConnection();
 
     const passwordHashed = bcrypt.hashSync(user.password, saltRounds);
     
@@ -18,13 +19,13 @@ export async function signUp(req, res) {
 
         res.status(201).send("Usuário cadastrado com sucesso!");
         console.log("Cadastrado!");
-        mongoClient.close();
-    } catch (error) {
+        closeConnection();
+    }catch (error) {
         console.log("Erro no cadastro - back");
         res.status(500).send(error.message).
-        mongoClient.close();
+        closeConnection();
     }finally{
-      mongoClient.close();
+      closeConnection();
     }
   }
   
