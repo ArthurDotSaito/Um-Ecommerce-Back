@@ -20,9 +20,11 @@ export async function signUp(req, res) {
 
         res.status(201).send("Usuário cadastrado com sucesso!");
         console.log("Cadastrado!");
+        mongoClient.close();
     } catch (error) {
-        console.log("Erro no cadastro - back")
-      res.status(500).send(error.message)
+        console.log("Erro no cadastro - back");
+        res.status(500).send(error.message).
+        mongoClient.close();
     }
   }
   
