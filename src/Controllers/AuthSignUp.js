@@ -11,8 +11,6 @@ export async function signUp(req, res) {
     const passwordHashed = bcrypt.hashSync(user.password, saltRounds);
     delete user.confirmPassword;
 
-    console.log(user);
-    
     try {    
         const checkExistingEmail = await db.collection("users").findOne({email: user.email});
         if(checkExistingEmail) return res.status(400).send("Usuário já cadastrado!");
