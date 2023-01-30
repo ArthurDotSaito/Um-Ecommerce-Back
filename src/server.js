@@ -14,8 +14,12 @@ server.use(express.json());
 server.use(cors());
 
 const PORT = Number(process.env.PORT) || 5000;
+
+
 server.use([authRouter,checkoutRouter])
 server.use("/products", productsRouters);
+server.use(routerlogin)
+
 
 // Server Response ------------------------------------------------------------------------//
 

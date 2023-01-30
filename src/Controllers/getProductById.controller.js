@@ -14,8 +14,6 @@ async function getProductById(req, res) {
   } catch (e) {
     console.log("Algo deu errado aqui! Back-end GetProductByID")
     res.status(500).send(`Algo deu errado na busca de produto por id: ${e}`);
-  } finally {
-    await closeConnection();
   }
 }
 
